@@ -64,7 +64,6 @@ require 'header.php';
             <td><b>LGMissed</b></td>
             <td><b>BallsDropped</b></td>
             <td><b>Climb</b></td>
-            <td><b>Level?</b></td>
             <td><b>DriveRating</b></td>
             <td><b>DefenseComments</b></td>
             <td><b>DefenseRating</b></td>
@@ -86,7 +85,6 @@ require 'header.php';
                 $row['teleLGMissed'] . '</td><td align="center">' .
                 $row['BallsDropped'] . '</td><td align="center">' .
                 $row['Climb'] . '</td><td align="center">' .
-                $row['LevelClimb'] . '</td><td align="center">' .
                 $row['DriveTeam'] . '</td><td align="center">' .
                 $row['DefenseComments'] . '</td><td align="center">' .
                 $row['DefenseRating'] . '</td><td align="center">' .
