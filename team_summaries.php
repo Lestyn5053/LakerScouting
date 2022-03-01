@@ -17,7 +17,7 @@ require 'header.php';
         $autoLGPercent = $row['autoLGAccuracy'] * 100;
         $HGPercent = $row['HGAccuracy'] * 100;
         $LGPercent = $row['LGAccuracy'] * 100;
-        $TrenchHGPercent = $row['HGTrenchAcc'] * 100;
+        $LaunchPadHGPercent = $row['HGLaunchPadAcc'] * 100;
         echo '<div class="card">
         <div class="card-header" id="heading'. $index .'">
         <h2 class="mb-0">
@@ -30,11 +30,9 @@ require 'header.php';
         <div class="card-body">
         In Autonomous, Team '. $row['TeamNum'] .' averaged <b>'. $row['AvgAutoHG'] .'</b> high goals scored on <b>'. $autoHGPercent .'%</b> accuracy.<br>
         They also averaged <b>'. $row['AvgAutoLG'] .'</b> low goals scored on <b>'. $autoLGPercent .'%</b> accuracy.<br>
-        In Teleop, they averaged <b>'. $row['AvgHG'] .'</b> high goals scored up close per match on <b>'. $HGPercent .'%</b> accuracy.<br>
+        In Teleop, they averaged <b>'. $row['AvgHG'] .'</b> high goals scored per match on <b>'. $HGPercent .'%</b> accuracy.<br>
         They also averaged <b>'. $row['AvgLG'] .'</b> low goals scored per match on <b>'. $LGPercent .'%</b> accuracy, and<br>
-        they averaged <b>'. $row['AvgHGTrench'] .'</b> high goals scored from the trench per match on <b>'. $TrenchHGPercent .'%</b> accuracy.<br>
-        They successfully did the <b>Rotation Control</b> in <b>'. $row['RCMatches'] .' out of '. $row['Matches'] .'</b> matches,
-        and they successfully did the <b>Position Control</b> in <b>'. $row['PCMatches'] .' out of '. $row['Matches'] .'</b> matches.<br>';
+        they averaged <b>'. $row['AvgHGLaunchPad'] .'</b> high goals scored from the launch pad per match on <b>'. $LaunchPadHGPercent .'%</b> accuracy.<br>';
         $query = "SELECT * FROM MatchClimbing WHERE CompID=$CompID AND RobotID=$row[TeamNum]";
         $result = @mysqli_query($conn, $query);
         $rowB = mysqli_fetch_array($result);

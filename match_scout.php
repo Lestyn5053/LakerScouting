@@ -65,16 +65,7 @@ require 'header.php';
             </div>
             <div class="tab-pane fade" id="pills-auto" role="tabpanel" aria-labelledby="pills-auto-tab">
                 <div class="form-group">
-                    <label for="preload" class="col-sm-2 col-form-label">How many balls did they preload?</label>
-                    <select class="custom-select mr-sm-2" name="preload" id="preload">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="auto_move" class="col-sm-2 col-form-label">Did they move off the initiation line?</label>
+                    <label for="auto_move" class="col-sm-2 col-form-label">Did they move out of the Tarmac?</label>
                     <div class="custom-control custom-radio custom-control-inline">
                         <input type="radio" id="auto_move1" name="auto_move" class="custom-control-input" value="1">
                         <label class="custom-control-label" for="auto_move1">Yes</label>
@@ -84,7 +75,7 @@ require 'header.php';
                         <label class="custom-control-label" for="auto_move2">No</label>
                     </div>
                 </div>
-                <h2>Power Cells</h2>
+                <h2>Cargo</h2>
                 <div class="form-group">
                     <script>
                         function plusOne() {
@@ -187,7 +178,7 @@ require 'header.php';
                 </div>
             </div>
             <div class="tab-pane fade" id="pills-teleop" role="tabpanel" aria-labelledby="pills-teleop-tab">
-                <h2>Power Cells</h2>
+                <h2>Cargo</h2>
                 <div class="form-group">
                     <script>
                         function plusOneD() {
@@ -202,7 +193,7 @@ require 'header.php';
                             }
                         }
                     </script>
-                    <label for="hg_scored">High Goals Scored Close</label>
+                    <label for="hg_scored">High Goals Scored</label>
                     <input type="number" class="form-control" pattern="[0-9]*" id="hg_scored" name="hg_scored" value="0">
                     <div class="row">
                         <div class="col">
@@ -212,7 +203,6 @@ require 'header.php';
                             <button type="button" class="btn btn-primary btn-block" onclick="minusOneD()">-1</button>
                         </div>
                     </div>
-                    <small class="form-text text-muted">This refers to any balls scored inside the initiation line (and outside of the trench run)</small>
                 </div>
                 <div class="form-group">
                     <script>
@@ -228,7 +218,7 @@ require 'header.php';
                             }
                         }
                     </script>
-                    <label for="hg_missed">High Goals Missed Close</label>
+                    <label for="hg_missed">High Goals Missed</label>
                     <input type="number" class="form-control" pattern="[0-9]*" id="hg_missed" name="hg_missed" value="0">
                     <div class="row">
                         <div class="col">
@@ -242,19 +232,19 @@ require 'header.php';
                 <div class="form-group">
                     <script>
                         function plusOneJ() {
-                            document.getElementById('hg_scored_trench').stepUp(1);
+                            document.getElementById('hg_scored_launch_pad').stepUp(1);
                         }
 
                         function minusOneJ() {
-                            document.getElementById('hg_scored_trench').stepDown(1);
-                            if (document.getElementById('hg_scored_trench').value < 0) {
-                                document.getElementById('hg_scored_trench').value = 0;
+                            document.getElementById('hg_scored_launch_pad').stepDown(1);
+                            if (document.getElementById('hg_scored_launch_pad').value < 0) {
+                                document.getElementById('hg_scored_launch_pad').value = 0;
                                 alert("Nice try. You can't enter a negative number");
                             }
                         }
                     </script>
-                    <label for="hg_scored_trench">High Goals Scored Trench</label>
-                    <input type="number" class="form-control" pattern="[0-9]*" id="hg_scored_trench" name="hg_scored_trench" value="0">
+                    <label for="hg_scored_launch_pad">High Goals Scored Launch Pad</label>
+                    <input type="number" class="form-control" pattern="[0-9]*" id="hg_scored_launch_pad" name="hg_scored_launch_pad" value="0">
                     <div class="row">
                         <div class="col">
                             <button type="button" class="btn btn-primary btn-block" onclick="plusOneJ()">+1</button>
@@ -263,24 +253,24 @@ require 'header.php';
                             <button type="button" class="btn btn-primary btn-block" onclick="minusOneJ()">-1</button>
                         </div>
                     </div>
-                    <small class="form-text text-muted">This refers to any balls scored from within the trench run</small>
+                    <small class="form-text text-muted">This refers to any balls scored from one of the alliance launch pads</small>
                 </div>
                 <div class="form-group">
                     <script>
                         function plusOneK() {
-                            document.getElementById('hg_missed_trench').stepUp(1);
+                            document.getElementById('hg_missed_launch_pad').stepUp(1);
                         }
 
                         function minusOneK() {
-                            document.getElementById('hg_missed_trench').stepDown(1);
-                            if (document.getElementById('hg_missed_trench').value < 0) {
-                                document.getElementById('hg_missed_trench').value = 0;
+                            document.getElementById('hg_missed_launch_pad').stepDown(1);
+                            if (document.getElementById('hg_missed_launch_pad').value < 0) {
+                                document.getElementById('hg_missed_launch_pad').value = 0;
                                 alert("Nice try. You can't enter a negative number");
                             }
                         }
                     </script>
-                    <label for="hg_missed">High Goals Missed Trench</label>
-                    <input type="number" class="form-control" pattern="[0-9]*" id="hg_missed_trench" name="hg_missed_trench" value="0">
+                    <label for="hg_missed">High Goals Missed Launch Pad</label>
+                    <input type="number" class="form-control" pattern="[0-9]*" id="hg_missed_launch_pad" name="hg_missed_launch_pad" value="0">
                     <div class="row">
                         <div class="col">
                             <button type="button" class="btn btn-primary btn-block" onclick="plusOneK()">+1</button>
@@ -354,7 +344,7 @@ require 'header.php';
                             }
                         }
                     </script>
-                    <label for="balls_dropped">Power Cells Dropped</label>
+                    <label for="balls_dropped">Cargo Dropped</label>
                     <input type="number" class="form-control" pattern="[0-9]*" id="balls_dropped" name="balls_dropped" value="0">
                     <div class="row">
                         <div class="col">
@@ -365,74 +355,16 @@ require 'header.php';
                         </div>
                     </div>
                 </div>
-                <h2>Wheel of Fortune</h2>
-                <div class="form-group">
-                    <label for="rotation_control" class="col-sm-2 col-form-label">Rotation Control?</label>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="rotation_control1" name="rotation_control" class="custom-control-input" value="1">
-                        <label class="custom-control-label" for="rotation_control1">Yes</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="rotation_control2" name="rotation_control" class="custom-control-input" value="0" checked>
-                        <label class="custom-control-label" for="rotation_control2">No</label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="rc_accurate" class="col-sm-2 col-form-label">Did they get it on the first try?</label>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="rc_accurate1" name="rc_accurate" class="custom-control-input" value="1">
-                        <label class="custom-control-label" for="rc_accurate1">Yes</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="rc_accurate2" name="rc_accurate" class="custom-control-input" value="0" checked>
-                        <label class="custom-control-label" for="rc_accurate2">No</label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="position_control" class="col-sm-2 col-form-label">Position Control?</label>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="position_control1" name="position_control" class="custom-control-input" value="1">
-                        <label class="custom-control-label" for="position_control1">Yes</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="position_control2" name="position_control" class="custom-control-input" value="0" checked>
-                        <label class="custom-control-label" for="position_control2">No</label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="pc_accurate" class="col-sm-2 col-form-label">Did they get it on the first try?</label>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="pc_accurate1" name="pc_accurate" class="custom-control-input" value="1">
-                        <label class="custom-control-label" for="pc_accurate1">Yes</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="pc_accurate2" name="pc_accurate" class="custom-control-input" value="0" checked>
-                        <label class="custom-control-label" for="pc_accurate2">No</label>
-                    </div>
-                </div>
-            </div>
             <div class="tab-pane fade" id="pills-endgame" role="tabpanel" aria-labelledby="pills-endgame-tab">
                 <div class="form-group">
                     <label for="climb">Climbing:</label>
                     <select class="custom-select mr-sm-2" name="climb" id="climb">
-                        <option value="nothing">Not at Rendezvous Point</option>
-                        <option value="parked">Parked</option>
-                        <option value="climb_alone">Climbed Alone</option>
-                        <option value="climb_partner">Climed with a Partner</option>
-                        <option value="triple_climb">All Three Robots Climbed</option>
+                        <option value="nothing">Did not climb</option>
+                        <option value="low_rung">Low Rung</option>
+                        <option value="mid_rung">Mid Rung</option>
+                        <option value="high_rung">High Rung</option>
+                        <option value="traversal_rung">Traversal Rung</option>
                     </select>
-                </div>
-                <div class="form-group">
-                    <label for="level" class="col-sm-2 col-form-label">Was the Generator Switch level?</label>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="level1" name="level" class="custom-control-input" value="1">
-                        <label class="custom-control-label" for="level1">Yes</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="level2" name="level" class="custom-control-input" value="0" checked>
-                        <label class="custom-control-label" for="level2">No</label>
-                    </div>
-                    <small class="form-text text-muted">NOTE: If Nobody on the alliance climbed, please choose "No"</small>
                 </div>
                 <div class="form-group">
                     <label for="drive_team" class="col-sm-2 col-form-label">Please rate the drive team performance:</label>
