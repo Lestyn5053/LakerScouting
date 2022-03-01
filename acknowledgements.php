@@ -16,9 +16,8 @@ require 'header.php';
     </ul>
     <p>As always, I'd like to give a huge shoutout to Laker Robotics for taking a chance on me back in 2015, giving me such a great opportunity to learn more than I ever could have imagined,
         and continuing to be a fantastic organization after my class's graduation.<br>
-        I'm looking forward to witnessing an amazing 7th season!
+        I'm looking forward to witnessing an amazing 9th season!
     </p>
-    <small>Psst. If you're a Lakers Student and happen to actually read this, shoot me a message with your favorite movie from 2019!</small>
 </main>
 <?php
 require 'footer.php';
