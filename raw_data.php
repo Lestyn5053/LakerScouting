@@ -53,7 +53,6 @@ require 'header.php';
         echo '<table id="rawdata" cellspacing="5" cellpadding="8">
             <tr align="center"><td><b>Team</b></td>
             <td><b>Match</b></td>
-            <td><b>Preload</b></td>
             <td><b>Auto Move?</b></td>
             <td><b>AutoHGScored</b></td>
             <td><b>AutoHGMissed</b></td>
@@ -64,10 +63,6 @@ require 'header.php';
             <td><b>LGScored</b></td>
             <td><b>LGMissed</b></td>
             <td><b>BallsDropped</b></td>
-            <td><b>Rotation?</b></td>
-            <td><b>FIRSTTry?</b></td>
-            <td><b>Position?</b></td>
-            <td><b>FIRSTTry?</b></td>
             <td><b>Climb</b></td>
             <td><b>Level?</b></td>
             <td><b>DriveRating</b></td>
@@ -80,7 +75,6 @@ require 'header.php';
             echo '<tr><td>' .
                 $row['RobotID'] . '</td><td align="center">' .
                 $row['MatchNum'] . '</td><td align="center">' .
-                $row['autoPreload'] . '</td><td align="center">' .
                 $row['autoMove'] . '</td><td align="center">' .
                 $row['autoHGScored'] . '</td><td align="center">' .
                 $row['autoHGMissed'] . '</td><td align="center">' .
@@ -91,10 +85,6 @@ require 'header.php';
                 $row['teleLGScored'] . '</td><td align="center">' .
                 $row['teleLGMissed'] . '</td><td align="center">' .
                 $row['BallsDropped'] . '</td><td align="center">' .
-                $row['RotationControl'] . '</td><td align="center">' .
-                $row['RCFirstTry'] . '</td><td align="center">' .
-                $row['PositionControl'] . '</td><td align="center">' .
-                $row['PCFirstTry'] . '</td><td align="center">' .
                 $row['Climb'] . '</td><td align="center">' .
                 $row['LevelClimb'] . '</td><td align="center">' .
                 $row['DriveTeam'] . '</td><td align="center">' .
