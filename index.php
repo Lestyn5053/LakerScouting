@@ -6,10 +6,12 @@ require 'header.php';
     <div class="text-center">
         <img class="img-fluid" src="images/startup_logo.jpeg" alt="Laker Robotics Logo">
     </div>
-    <a href="scout.php" class="btn btn-outline-primary btn-lg btn-block">Scout</a>
-    <a href="review_data.php" class="btn btn-outline-primary btn-lg btn-block">Review Data</a>
-    <a href="picklist_select.php" class="btn btn-outline-primary btn-lg btn-block">Picklist Generator</a>
-    <a href="acknowledgements.php" class="btn btn-outline-primary btn-lg btn-block">Acknowledgements</a>
+    <div class="d-grid gap-2">
+        <a href="scout.php" class="btn btn-outline-primary btn-lg btn-block">Scout</a>
+        <a href="review_data.php" class="btn btn-outline-primary btn-lg btn-block">Review Data</a>
+        <a href="picklist_select.php" class="btn btn-outline-primary btn-lg btn-block">Picklist Generator</a>
+        <a href="acknowledgements.php" class="btn btn-outline-primary btn-lg btn-block">Acknowledgements</a>
+    </div>
 </main>
 <?php
 require 'footer.php';

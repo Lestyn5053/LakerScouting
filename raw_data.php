@@ -79,8 +79,8 @@ require 'header.php';
                 $row['autoHGMissed'] . '</td><td align="center">' .
                 $row['autoLGScored'] . '</td><td align="center">' .
                 $row['autoLGMissed'] . '</td><td align="center">' .
-                $row['teleHGScored'] . '</td><td align="center">' .
-                $row['teleHGMissed'] . '</td><td align="center">' .
+                $row['HGScored'] . '</td><td align="center">' .
+                $row['HGMissed'] . '</td><td align="center">' .
                 $row['teleLGScored'] . '</td><td align="center">' .
                 $row['teleLGMissed'] . '</td><td align="center">' .
                 $row['BallsDropped'] . '</td><td align="center">' .
