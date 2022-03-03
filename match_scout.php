@@ -9,17 +9,17 @@ require 'header.php';
     <h1 style="text-align:center">Match Scouting</h1>
     <form class="needs-validation" action="includes/match_submit.php?CompID=<?php echo $CompID; ?>" method="post" novalidate>
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link active" id="pills-basic-tab" data-toggle="pill" href="#pills-basic" role="tab" aria-controls="pills-basic" aria-selected="true">Basic Info</a>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="pills-basic-tab" data-bs-toggle="pill" data-bs-target="#pills-basic" type="button" role="tab" aria-controls="pills-basic" aria-selected="true">Basic Info</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" id="pills-auto-tab" data-toggle="pill" href="#pills-auto" role="tab" aria-controls="pills-auto" aria-selected="false">Auto</a>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-auto-tab" data-bs-toggle="pill" data-bs-target="#pills-auto" type="button" role="tab" aria-controls="pills-auto" aria-selected="false">Auto</button>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" id="pills-teleop-tab" data-toggle="pill" href="#pills-teleop" role="tab" aria-controls="pills-teleop" aria-selected="false">Teleop</a>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-teleop-tab" data-bs-toggle="pill" data-bs-target="#pills-teleop" type="button" role="tab" aria-controls="pills-teleop" aria-selected="false">Teleop</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" id="pills-endgame-tab" data-toggle="pill" href="#pills-endgame" role="tab" aria-controls="pills-endgame" aria-selected="false">End Game</a>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-endgame-tab" data-bs-toggle="pill" data-bs-target="#pills-endgame" type="button" role="tab" aria-controls="pills-endgame" aria-selected="false">End Game</a>
             </li>
         </ul>
         <?php
@@ -27,7 +27,7 @@ require 'header.php';
             if ($_GET['submit'] == "success") {
                 echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
                     Data submitted successfully! Thank you for scouting this match!
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </div>';
             }
@@ -41,7 +41,7 @@ require 'header.php';
                 </div>
                 <div class="form-group">
                     <label for="team" class="col-sm-2 col-form-label">Team Number:</label>
-                    <select class="custom-select mr-sm-2" name="team" id="team">
+                    <select class="form-select mr-sm-2" name="team" id="team">
                         <?php
                         $sql = "SELECT Robot.ID AS RobotNum FROM Robot, RobotsAtComp WHERE Robot.ID=RobotsAtComp.RobotID AND RobotsAtComp.CompID=? ORDER BY Robot.ID ASC";
                         $stmt = mysqli_stmt_init($conn);
@@ -67,12 +67,12 @@ require 'header.php';
                 <div class="form-group">
                     <label for="auto_move" class="col-sm-2 col-form-label">Did they move out of the Tarmac?</label>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="auto_move1" name="auto_move" class="custom-control-input" value="1">
-                        <label class="custom-control-label" for="auto_move1">Yes</label>
+                        <input type="radio" id="auto_move1" name="auto_move" class="form-check-input" value="1">
+                        <label class="form-check-label" for="auto_move1">Yes</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="auto_move2" name="auto_move" class="custom-control-input" value="0" checked>
-                        <label class="custom-control-label" for="auto_move2">No</label>
+                        <input type="radio" id="auto_move2" name="auto_move" class="form-check-input" value="0" checked>
+                        <label class="form-check-label" for="auto_move2">No</label>
                     </div>
                 </div>
                 <h2>Cargo</h2>
@@ -93,10 +93,10 @@ require 'header.php';
                     <label for="a_hg_scored">High Goals Scored</label>
                     <input type="number" class="form-control" pattern="[0-9]*" id="a_hg_scored" name="a_hg_scored" value="0">
                     <div class="row">
-                        <div class="col">
+                        <div class="d-grid gap-2 col">
                             <button type="button" class="btn btn-primary btn-block" onclick="plusOne()">+1</button>
                         </div>
-                        <div class="col">
+                        <div class="d-grid gap-2 col">
                             <button type="button" class="btn btn-primary btn-block" onclick="minusOne()">-1</button>
                         </div>
                     </div>
@@ -118,10 +118,10 @@ require 'header.php';
                     <label for="a_hg_missed">High Goals Missed</label>
                     <input type="number" class="form-control" pattern="[0-9]*" id="a_hg_missed" name="a_hg_missed" value="0">
                     <div class="row">
-                        <div class="col">
+                        <div class="d-grid gap-2 col">
                             <button type="button" class="btn btn-primary btn-block" onclick="plusOneA()">+1</button>
                         </div>
-                        <div class="col">
+                        <div class="d-grid gap-2 col">
                             <button type="button" class="btn btn-primary btn-block" onclick="minusOneA()">-1</button>
                         </div>
                     </div>
@@ -143,10 +143,10 @@ require 'header.php';
                     <label for="a_lg_scored">Low Goals Scored</label>
                     <input type="number" class="form-control" pattern="[0-9]*" id="a_lg_scored" name="a_lg_scored" value="0">
                     <div class="row">
-                        <div class="col">
+                        <div class="d-grid gap-2 col">
                             <button type="button" class="btn btn-primary btn-block" onclick="plusOneB()">+1</button>
                         </div>
-                        <div class="col">
+                        <div class="d-grid gap-2 col">
                             <button type="button" class="btn btn-primary btn-block" onclick="minusOneB()">-1</button>
                         </div>
                     </div>
@@ -168,10 +168,10 @@ require 'header.php';
                     <label for="a_lg_missed">Low Goals Missed</label>
                     <input type="number" class="form-control" pattern="[0-9]*" id="a_lg_missed" name="a_lg_missed" value="0">
                     <div class="row">
-                        <div class="col">
+                        <div class="d-grid gap-2 col">
                             <button type="button" class="btn btn-primary btn-block" onclick="plusOneC()">+1</button>
                         </div>
-                        <div class="col">
+                        <div class="d-grid gap-2 col">
                             <button type="button" class="btn btn-primary btn-block" onclick="minusOneC()">-1</button>
                         </div>
                     </div>
@@ -196,10 +196,10 @@ require 'header.php';
                     <label for="hg_scored">High Goals Scored</label>
                     <input type="number" class="form-control" pattern="[0-9]*" id="hg_scored" name="hg_scored" value="0">
                     <div class="row">
-                        <div class="col">
+                        <div class="d-grid gap-2 col">
                             <button type="button" class="btn btn-primary btn-block" onclick="plusOneD()">+1</button>
                         </div>
-                        <div class="col">
+                        <div class="d-grid gap-2 col">
                             <button type="button" class="btn btn-primary btn-block" onclick="minusOneD()">-1</button>
                         </div>
                     </div>
@@ -221,10 +221,10 @@ require 'header.php';
                     <label for="hg_missed">High Goals Missed</label>
                     <input type="number" class="form-control" pattern="[0-9]*" id="hg_missed" name="hg_missed" value="0">
                     <div class="row">
-                        <div class="col">
+                        <div class="d-grid gap-2 col">
                             <button type="button" class="btn btn-primary btn-block" onclick="plusOneE()">+1</button>
                         </div>
-                        <div class="col">
+                        <div class="d-grid gap-2 col">
                             <button type="button" class="btn btn-primary btn-block" onclick="minusOneE()">-1</button>
                         </div>
                     </div>
@@ -246,10 +246,10 @@ require 'header.php';
                     <label for="hg_scored_launch_pad">High Goals Scored Launch Pad</label>
                     <input type="number" class="form-control" pattern="[0-9]*" id="hg_scored_launch_pad" name="hg_scored_launch_pad" value="0">
                     <div class="row">
-                        <div class="col">
+                        <div class="d-grid gap-2 col">
                             <button type="button" class="btn btn-primary btn-block" onclick="plusOneJ()">+1</button>
                         </div>
-                        <div class="col">
+                        <div class="d-grid gap-2 col">
                             <button type="button" class="btn btn-primary btn-block" onclick="minusOneJ()">-1</button>
                         </div>
                     </div>
@@ -272,10 +272,10 @@ require 'header.php';
                     <label for="hg_missed">High Goals Missed Launch Pad</label>
                     <input type="number" class="form-control" pattern="[0-9]*" id="hg_missed_launch_pad" name="hg_missed_launch_pad" value="0">
                     <div class="row">
-                        <div class="col">
+                        <div class="d-grid gap-2 col">
                             <button type="button" class="btn btn-primary btn-block" onclick="plusOneK()">+1</button>
                         </div>
-                        <div class="col">
+                        <div class="d-grid gap-2 col">
                             <button type="button" class="btn btn-primary btn-block" onclick="minusOneK()">-1</button>
                         </div>
                     </div>
@@ -297,10 +297,10 @@ require 'header.php';
                     <label for="lg_scored">Low Goals Scored</label>
                     <input type="number" class="form-control" pattern="[0-9]*" id="lg_scored" name="lg_scored" value="0">
                     <div class="row">
-                        <div class="col">
+                        <div class="d-grid gap-2 col">
                             <button type="button" class="btn btn-primary btn-block" onclick="plusOneF()">+1</button>
                         </div>
-                        <div class="col">
+                        <div class="d-grid gap-2 col">
                             <button type="button" class="btn btn-primary btn-block" onclick="minusOneF()">-1</button>
                         </div>
                     </div>
@@ -322,10 +322,10 @@ require 'header.php';
                     <label for="lg_missed">Low Goals Missed</label>
                     <input type="number" class="form-control" pattern="[0-9]*" id="lg_missed" name="lg_missed" value="0">
                     <div class="row">
-                        <div class="col">
+                        <div class="d-grid gap-2 col">
                             <button type="button" class="btn btn-primary btn-block" onclick="plusOneG()">+1</button>
                         </div>
-                        <div class="col">
+                        <div class="d-grid gap-2 col">
                             <button type="button" class="btn btn-primary btn-block" onclick="minusOneG()">-1</button>
                         </div>
                     </div>
@@ -347,18 +347,19 @@ require 'header.php';
                     <label for="balls_dropped">Cargo Dropped</label>
                     <input type="number" class="form-control" pattern="[0-9]*" id="balls_dropped" name="balls_dropped" value="0">
                     <div class="row">
-                        <div class="col">
+                        <div class="d-grid gap-2 col">
                             <button type="button" class="btn btn-primary btn-block" onclick="plusOneH()">+1</button>
                         </div>
-                        <div class="col">
+                        <div class="d-grid gap-2 col">
                             <button type="button" class="btn btn-primary btn-block" onclick="minusOneH()">-1</button>
                         </div>
                     </div>
                 </div>
+            </div>
             <div class="tab-pane fade" id="pills-endgame" role="tabpanel" aria-labelledby="pills-endgame-tab">
                 <div class="form-group">
                     <label for="climb">Climbing:</label>
-                    <select class="custom-select mr-sm-2" name="climb" id="climb">
+                    <select class="form-select mr-sm-2" name="climb" id="climb">
                         <option value="nothing">Did not climb</option>
                         <option value="low_rung">Low Rung</option>
                         <option value="mid_rung">Mid Rung</option>
@@ -368,7 +369,7 @@ require 'header.php';
                 </div>
                 <div class="form-group">
                     <label for="drive_team" class="col-sm-2 col-form-label">Please rate the drive team performance:</label>
-                    <input type="range" class="custom-range" value="1" min="1" max="10" id="drive_team" name="drive_team" onchange="updateTextBox(this.value);">
+                    <input type="range" class="form-range" value="1" min="1" max="10" id="drive_team" name="drive_team" onchange="updateTextBox(this.value);">
                     <script>
                         function updateTextBox(val) {
                             document.getElementById('driveteamtext').value = val;
@@ -379,12 +380,12 @@ require 'header.php';
                 <div class="form-group">
                     <label for="defense" class="col-sm-2 col-form-label">Did this team play defense this match?</label>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="defense1" name="defense" class="custom-control-input" value="1">
-                        <label class="custom-control-label" for="defense1">Yes</label>
+                        <input type="radio" id="defense1" name="defense" class="form-check-input" value="1">
+                        <label class="form-check-label" for="defense1">Yes</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="defense2" name="defense" class="custom-control-input" value="0" checked>
-                        <label class="custom-control-label" for="defense2">No</label>
+                        <input type="radio" id="defense2" name="defense" class="form-check-input" value="0" checked>
+                        <label class="form-check-label" for="defense2">No</label>
                     </div>
                 </div>
                 <div class="form-group">
@@ -393,7 +394,7 @@ require 'header.php';
                 </div>
                 <div class="form-group">
                     <label for="defense_rating" class="col-sm-2 col-form-label">Please rate how well they defended:</label>
-                    <input type="range" class="custom-range" value="0" min="0" max="10" id="defense_rating" name="defense_rating" onchange="updateTextBox1(this.value);">
+                    <input type="range" class="form-range" value="0" min="0" max="10" id="defense_rating" name="defense_rating" onchange="updateTextBox1(this.value);">
                     <script>
                         function updateTextBox1(val) {
                             document.getElementById('defensetext').value = val;
@@ -404,14 +405,13 @@ require 'header.php';
                 </div>
                 <div class="form-group">
                     <label for="intake_rating" class="col-sm-2 col-form-label">Please rate how well their ball intake was:</label>
-                    <input type="range" class="custom-range" value="1" min="1" max="10" id="intake_rating" name="intake_rating" onchange="updateTextBox2(this.value);">
+                    <input type="range" class="form-range" value="1" min="1" max="10" id="intake_rating" name="intake_rating" onchange="updateTextBox2(this.value);">
                     <script>
                         function updateTextBox2(val) {
                             document.getElementById('intaketext').value = val;
                         }
                     </script>
                     <input type="text" class="form-control" id="intaketext" value="1" readonly>
-                    <small class="form-text text-muted">It might seem weird to be asking this, but Callahan really wants to know. It's part of a 4-D Chess play!</small>
                 </div>
                 <div class="form-group">
                     <label for="penalties">Penalties?</label>
