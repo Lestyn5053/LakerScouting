@@ -94,7 +94,9 @@ require 'header.php';
         }
         echo '</table>';
     ?>
-        <button class="btn btn-outline-success btn-block input-group-btn" onclick="exportTableToExcel('rawdata', 'matchdata')">Export to Excel</button>
+        <div class="d-grid gap-2">
+            <button class="btn btn-outline-success btn-block input-group-btn" onclick="exportTableToExcel('rawdata', 'matchdata')">Export to Excel</button>
+        </div>
         <small class="text-muted">Please note that this feature is intended for PC use. Excel might yell at you saying that you shouldn't open it unless you trust the source. Don't worry, everything is fine.</small>
     <?php
     }
