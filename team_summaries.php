@@ -8,7 +8,7 @@ require 'header.php';
     ?>
     <h1 style="text-align:center">Team Summaries</h1>
     <?php
-    $sql = "SELECT MatchStats.RobotID AS `TeamNum`, Robot.TeamName AS `TeamName`, COUNT(MatchStats.RobotID) AS `Matches`, MatchStats.CompID AS `CompID`, AVG(MatchStats.autoHGScored) AS `AvgAutoHG`,(SUM(MatchStats.autoHGScored) / SUM(MatchStats.autoTotHGAtt)) AS `autoHGAccuracy`, AVG(MatchStats.autoLGScored) AS `AvgAutoLG`,(SUM(MatchStats.autoLGScored) / SUM(MatchStats.autoTotLGAtt)) AS `autoLGAccuracy`, AVG(MatchStats.HGScored) AS `AvgHG`,(SUM(MatchStats.HGScored) / SUM(MatchStats.HGTotAtt)) AS `HGAccuracy`, AVG(MatchStats.launchPadHGScored) AS `AvgHGLaunchPad`, (SUM(MatchStats.launchPadHGScored) / SUM(MatchStats.launchPadHGTotAtt)) AS `HGLaunchPadAcc`, AVG(MatchStats.teleLGScored) AS `AvgLG`,(sum(MatchStats.teleLGScored) / sum(MatchStats.teleLGTotAtt)) AS `LGAccuracy` from (MatchStats JOIN Robot) WHERE (Robot.ID = MatchStats.RobotID) AND (CompID=?) GROUP BY `TeamNum`, MatchStats.CompID ORDER BY TeamNum ASC";
+    $sql = "SELECT MatchStats.RobotID AS `TeamNum`, Robot.TeamName AS `TeamName`, COUNT(MatchStats.RobotID) AS `Matches`, MatchStats.CompID AS `CompID`, AVG(MatchStats.AutoSpeakerScored) AS `AvgAutoSpeaker`,(SUM(MatchStats.AutoSpeakerScored) / SUM(MatchStats.AutoSpeakerAttempts)) AS `autoSpeakerAccuracy`, AVG(MatchStats.autoAmpScored) AS `AvgAutoAmp`,(SUM(MatchStats.autoAmpScored) / SUM(MatchStats.autoAmpAttempts)) AS `autoAmpAccuracy`, AVG(MatchStats.SpeakerScored) AS `AvgSpeaker`,(SUM(MatchStats.SpeakerScored) / SUM(MatchStats.SpeakerAttempts)) AS `SpeakerAccuracy`, AVG(MatchStats.PodiumSpeakerScored) AS `AvgSpeakerPodium`, (SUM(MatchStats.PodiumSpeakerScored) / SUM(MatchStats.PodiumSpeakerAttempts)) AS `PodiumAccuracy`, AVG(MatchStats.AmpScored) AS `AvgAmp`,(sum(MatchStats.AmpScored) / sum(MatchStats.AmpAttempts)) AS `AmpAccuracy` from (MatchStats JOIN Robot) WHERE (Robot.ID = MatchStats.RobotID) AND (CompID=?) GROUP BY `TeamNum`, MatchStats.CompID ORDER BY TeamNum ASC";
 
     $stmt = mysqli_stmt_init($conn);
 
@@ -22,11 +22,11 @@ require 'header.php';
         $index = 0;
         echo '<div class="accordion" id="accordionExample">';
         while ($row = mysqli_fetch_array($response)) {
-            $autoHGPercent = $row['autoHGAccuracy'] * 100;
-            $autoLGPercent = $row['autoLGAccuracy'] * 100;
-            $HGPercent = $row['HGAccuracy'] * 100;
-            $LGPercent = $row['LGAccuracy'] * 100;
-            $LaunchPadHGPercent = $row['HGLaunchPadAcc'] * 100;
+            $autoHGPercent = $row['autoSpeakerAccuracy'] * 100;
+            $autoLGPercent = $row['autoAmpAccuracy'] * 100;
+            $HGPercent = $row['SpeakerAccuracy'] * 100;
+            $LGPercent = $row['AmpAccuracy'] * 100;
+            $ProtectedPercent = $row['PodiumAccuracy'] * 100;
             echo '<div class="accordion-item">
         <h2 class="accordion-header" id="heading' . $index . '">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse' . $index . '" aria-expanded="false" aria-controls="collapse' . $index . '">
@@ -35,12 +35,12 @@ require 'header.php';
         </h2>
         <div id="collapse' . $index . '" class="accordion-collapse collapse" aria-labelledby="heading' . $index . '" data-parent="#accordionExample">
         <div class="accordion-body">
-        In Autonomous, Team ' . $row['TeamNum'] . ' averaged <b>' . $row['AvgAutoHG'] . '</b> high goals scored on <b>' . $autoHGPercent . '%</b> accuracy.<br>
-        They also averaged <b>' . $row['AvgAutoLG'] . '</b> low goals scored on <b>' . $autoLGPercent . '%</b> accuracy.<br>
-        In Teleop, they averaged <b>' . $row['AvgHG'] . '</b> high goals scored per match on <b>' . $HGPercent . '%</b> accuracy.<br>
-        They also averaged <b>' . $row['AvgLG'] . '</b> low goals scored per match on <b>' . $LGPercent . '%</b> accuracy, and<br>
-        they averaged <b>' . $row['AvgHGLaunchPad'] . '</b> high goals scored from the launch pad per match on <b>' . $LaunchPadHGPercent . '%</b> accuracy.<br>';
-        $query = "SELECT `MatchStats`.`RobotID` AS `RobotID`,`MatchStats`.`CompID` AS `CompID`,COUNT(`MatchStats`.`Climb`) AS `MatchesClimbed`,COUNT(`MatchStats`.`RobotID`) AS `Matches` FROM `MatchStats` WHERE CompID=$CompID AND RobotID=$row[TeamNum] AND ((`MatchStats`.`Climb` = 'low_rung') OR (`MatchStats`.`Climb` = 'mid_rung') OR (`MatchStats`.`Climb` = 'high_rung') OR (`MatchStats`.`Climb` = 'traversal_rung')) GROUP BY `MatchStats`.`RobotID`,`MatchStats`.`CompID`";
+        In Autonomous, Team ' . $row['TeamNum'] . ' averaged <b>' . $row['AvgAutoSpeaker'] . '</b> speakers scored on <b>' . $autoHGPercent . '%</b> accuracy.<br>
+        They also averaged <b>' . $row['AvgAutoAmp'] . '</b> amps scored on <b>' . $autoLGPercent . '%</b> accuracy.<br>
+        In Teleop, they averaged <b>' . $row['AvgSpeaker'] . '</b> speakers scored per match on <b>' . $HGPercent . '%</b> accuracy.<br>
+        They also averaged <b>' . $row['AvgAmp'] . '</b> amps scored per match on <b>' . $LGPercent . '%</b> accuracy, and<br>
+        they averaged <b>' . $row['AvgSpeakerPodium'] . '</b> speakers scored from the podium per match on <b>' . $ProtectedPercent . '%</b> accuracy.<br>';
+        $query = "SELECT `MatchStats`.`RobotID` AS `RobotID`,`MatchStats`.`CompID` AS `CompID`,COUNT(`MatchStats`.`Climb`) AS `MatchesClimbed`,COUNT(`MatchStats`.`RobotID`) AS `Matches` FROM `MatchStats` WHERE CompID=$CompID AND RobotID=$row[TeamNum] AND ((`MatchStats`.`Climb` = 'on_stage_alone') OR (`MatchStats`.`Climb` = 'on_stage_one_teammate') OR (`MatchStats`.`Climb` = 'on_stage_alliance')) GROUP BY `MatchStats`.`RobotID`,`MatchStats`.`CompID`";
         $result = @mysqli_query($conn, $query);
         $rowB = mysqli_fetch_array($result);
         //If a team did not climb, the MatchClimbing view will NOT display any climbing info for them, so it won't say 0 matches. This statement is necessary for this.

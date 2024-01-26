@@ -8,24 +8,25 @@
         $ScoutName = $_POST['name'];
         $TeamNum = $_POST['team'];
         $MatchNum = $_POST['match'];
-        $initLine = $_POST['auto_move'];
-        $autoHGScored = $_POST['a_hg_scored'];
-        $autoHGMissed = $_POST['a_hg_missed'];
-        $autoHGTotal = $autoHGScored + $autoHGMissed;
-        $autoLGScored = $_POST['a_lg_scored'];
-        $autoLGMissed = $_POST['a_lg_missed'];
-        $autoLGTotal = $autoLGScored + $autoLGMissed;
-        $teleHGScored = $_POST['hg_scored'];
-        $teleHGMissed = $_POST['hg_missed'];
-        $teleHGTotal = $teleHGScored + $teleHGMissed;
-        $launchpadHGScored = $_POST['hg_scored_launch_pad'];
-        $launchpadHGMissed = $_POST['hg_missed_launch_pad'];
-        $launchpadHGTotal = $launchpadHGScored + $launchpadHGMissed;
-        $teleLGScored = $_POST['lg_scored'];
-        $teleLGMissed = $_POST['lg_missed'];
-        $teleLGTotal = $teleLGScored + $teleLGMissed;
-        $BallsDropped = $_POST['balls_dropped'];
+        $startingZone = $_POST['auto_move'];
+        $autoSpeakerScored = $_POST['a_speaker_scored'];
+        $autoSpeakerMissed = $_POST['a_speaker_missed'];
+        $autoSpeakerTotal = $autoSpeakerScored + $autoSpeakerMissed;
+        $autoAmpScored = $_POST['a_amp_scored'];
+        $autoAmpMissed = $_POST['a_amp_missed'];
+        $autoAmpTotal = $autoAmpScored + $autoAmpMissed;
+        $teleSpeakerScored = $_POST['speaker_scored'];
+        $teleSpeakerMissed = $_POST['speaker_missed'];
+        $teleSpeakerTotal = $teleSpeakerScored + $teleSpeakerMissed;
+        $podiumSpeakerScored = $_POST['speaker_scored_protected'];
+        $podiumSpeakerMissed = $_POST['speaker_missed_protected'];
+        $podiumSpeakerTotal = $podiumSpeakerScored + $podiumSpeakerMissed;
+        $teleAmpScored = $_POST['amp_scored'];
+        $teleAmpMissed = $_POST['amp_missed'];
+        $teleAmpTotal = $teleAmpScored + $teleAmpMissed;
+        $NotesDropped = $_POST['notes_dropped'];
         $Climb = $_POST['climb'];
+        $trapNote = $_POST['trap_note'];
         $DriveTeam = $_POST['drive_team'];
         $Defense = $_POST['defense'];
         $DefenseComments = $_POST['defense_comments'];
@@ -34,9 +35,9 @@
         $Penalties = $_POST['penalties'];
         $Comments = $_POST['comments'];
 
-        $sql = "INSERT INTO MatchStats VALUES(NULL, $TeamNum, $CompID, $MatchNum, '$ScoutName', $initLine, $autoHGScored, $autoHGMissed, $autoHGTotal, $autoLGScored, $autoLGMissed, $autoLGTotal,
-        $teleHGScored, $teleHGMissed, $teleHGTotal, $launchpadHGScored, $launchpadHGMissed, $launchpadHGTotal, $teleLGScored, $teleLGMissed, $teleLGTotal, $BallsDropped, '$Climb', $DriveTeam, $Defense,
-        '$DefenseComments', $DefenseRating, $IntakeRating, '$Penalties', '$Comments')";
+        $sql = "INSERT INTO MatchStats VALUES(NULL, $TeamNum, $CompID, $MatchNum, '$ScoutName', $startingZone, $autoSpeakerScored, $autoSpeakerMissed, $autoSpeakerTotal, $autoAmpScored, $autoAmpMissed, $autoAmpTotal,
+        $teleSpeakerScored, $teleSpeakerMissed, $teleSpeakerTotal, $podiumSpeakerScored, $podiumSpeakerMissed, $podiumSpeakerTotal, $teleAmpScored, $teleAmpMissed, $teleAmpTotal, $NotesDropped, '$Climb',
+        $trap_note, $DriveTeam, $Defense,'$DefenseComments', $DefenseRating, $IntakeRating, '$Penalties', '$Comments')";
         if(mysqli_query($conn, $sql))
         {
             header('Location: ' . '../match_scout.php?CompID='. $CompID .'&submit=success');

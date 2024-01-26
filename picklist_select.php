@@ -12,7 +12,7 @@
     <?php
 	while($row = mysqli_fetch_array($response))
 	{
-		echo '<a class="btn btn-outline-primary btn-lg btn-block" href="picklist_round.php?CompID='. $row['ID'] .'">'. $row['Name'] .'</a>';
+		echo '<a class="btn btn-outline-primary btn-lg btn-block" href="picklist.php?CompID='. $row['ID'] .'">'. $row['Name'] .'</a>';
 	}
 	?>
     </div> 

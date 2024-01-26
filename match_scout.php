@@ -65,7 +65,7 @@ require 'header.php';
             </div>
             <div class="tab-pane fade" id="pills-auto" role="tabpanel" aria-labelledby="pills-auto-tab">
                 <div class="form-group">
-                    <label for="auto_move" class="col-sm-2 col-form-label">Did they move out of the Tarmac?</label>
+                    <label for="auto_move" class="col-sm-2 col-form-label">Did they leave the starting zone?</label>
                     <div class="custom-control custom-radio custom-control-inline">
                         <input type="radio" id="auto_move1" name="auto_move" class="form-check-input" value="1">
                         <label class="form-check-label" for="auto_move1">Yes</label>
@@ -75,283 +75,152 @@ require 'header.php';
                         <label class="form-check-label" for="auto_move2">No</label>
                     </div>
                 </div>
-                <h2>Cargo</h2>
+                <h2>Notes (The Game Piece, not Words)</h2>
                 <div class="form-group">
                     <script>
-                        function plusOne() {
-                            document.getElementById('a_hg_scored').stepUp(1);
+                        function plusOne(field_name) {
+                            document.getElementById(field_name).stepUp(1);
                         }
 
-                        function minusOne() {
-                            document.getElementById('a_hg_scored').stepDown(1);
-                            if (document.getElementById('a_hg_scored').value < 0) {
-                                document.getElementById('a_hg_scored').value = 0;
+                        function minusOne(field_name) {
+                            document.getElementById(field_name).stepDown(1);
+                            if (document.getElementById(field_name).value < 0) {
+                                document.getElementById(field_name).value = 0;
                                 alert("Nice try. You can't enter a negative number");
                             }
                         }
                     </script>
-                    <label for="a_hg_scored">High Goals Scored</label>
-                    <input type="number" class="form-control" pattern="[0-9]*" id="a_hg_scored" name="a_hg_scored" value="0">
+                    <label for="a_speaker_scored">Speaker Notes Scored</label>
+                    <input type="number" class="form-control" pattern="[0-9]*" id="a_speaker_scored" name="a_speaker_scored" value="0">
                     <div class="row">
                         <div class="d-grid gap-2 col">
-                            <button type="button" class="btn btn-primary btn-block" onclick="plusOne()">+1</button>
+                            <button type="button" class="btn btn-primary btn-block" onclick="plusOne('a_speaker_scored')">+1</button>
                         </div>
                         <div class="d-grid gap-2 col">
-                            <button type="button" class="btn btn-primary btn-block" onclick="minusOne()">-1</button>
+                            <button type="button" class="btn btn-primary btn-block" onclick="minusOne('a_speaker_scored')">-1</button>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <script>
-                        function plusOneA() {
-                            document.getElementById('a_hg_missed').stepUp(1);
-                        }
-
-                        function minusOneA() {
-                            document.getElementById('a_hg_missed').stepDown(1);
-                            if (document.getElementById('a_hg_missed').value < 0) {
-                                document.getElementById('a_hg_missed').value = 0;
-                                alert("Nice try. You can't enter a negative number");
-                            }
-                        }
-                    </script>
-                    <label for="a_hg_missed">High Goals Missed</label>
-                    <input type="number" class="form-control" pattern="[0-9]*" id="a_hg_missed" name="a_hg_missed" value="0">
+                    <label for="a_speaker_missed">Speaker Notes Missed</label>
+                    <input type="number" class="form-control" pattern="[0-9]*" id="a_speaker_missed" name="a_speaker_missed" value="0">
                     <div class="row">
                         <div class="d-grid gap-2 col">
-                            <button type="button" class="btn btn-primary btn-block" onclick="plusOneA()">+1</button>
+                            <button type="button" class="btn btn-primary btn-block" onclick="plusOne('a_speaker_missed')">+1</button>
                         </div>
                         <div class="d-grid gap-2 col">
-                            <button type="button" class="btn btn-primary btn-block" onclick="minusOneA()">-1</button>
+                            <button type="button" class="btn btn-primary btn-block" onclick="minusOne('a_speaker_missed')">-1</button>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <script>
-                        function plusOneB() {
-                            document.getElementById('a_lg_scored').stepUp(1);
-                        }
-
-                        function minusOneB() {
-                            document.getElementById('a_lg_scored').stepDown(1);
-                            if (document.getElementById('a_lg_scored').value < 0) {
-                                document.getElementById('a_lg_scored').value = 0;
-                                alert("Nice try. You can't enter a negative number");
-                            }
-                        }
-                    </script>
-                    <label for="a_lg_scored">Low Goals Scored</label>
-                    <input type="number" class="form-control" pattern="[0-9]*" id="a_lg_scored" name="a_lg_scored" value="0">
+                    <label for="a_amp_scored">Amp Notes Scored</label>
+                    <input type="number" class="form-control" pattern="[0-9]*" id="a_amp_scored" name="a_amp_scored" value="0">
                     <div class="row">
                         <div class="d-grid gap-2 col">
-                            <button type="button" class="btn btn-primary btn-block" onclick="plusOneB()">+1</button>
+                            <button type="button" class="btn btn-primary btn-block" onclick="plusOne('a_amp_scored')">+1</button>
                         </div>
                         <div class="d-grid gap-2 col">
-                            <button type="button" class="btn btn-primary btn-block" onclick="minusOneB()">-1</button>
+                            <button type="button" class="btn btn-primary btn-block" onclick="minusOne('a_amp_scored')">-1</button>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <script>
-                        function plusOneC() {
-                            document.getElementById('a_lg_missed').stepUp(1);
-                        }
-
-                        function minusOneC() {
-                            document.getElementById('a_lg_missed').stepDown(1);
-                            if (document.getElementById('a_lg_missed').value < 0) {
-                                document.getElementById('a_lg_missed').value = 0;
-                                alert("Nice try. You can't enter a negative number");
-                            }
-                        }
-                    </script>
-                    <label for="a_lg_missed">Low Goals Missed</label>
-                    <input type="number" class="form-control" pattern="[0-9]*" id="a_lg_missed" name="a_lg_missed" value="0">
+                    <label for="a_amp_missed">Amp Notes Missed</label>
+                    <input type="number" class="form-control" pattern="[0-9]*" id="a_amp_missed" name="a_amp_missed" value="0">
                     <div class="row">
                         <div class="d-grid gap-2 col">
-                            <button type="button" class="btn btn-primary btn-block" onclick="plusOneC()">+1</button>
+                            <button type="button" class="btn btn-primary btn-block" onclick="plusOne('a_amp_missed')">+1</button>
                         </div>
                         <div class="d-grid gap-2 col">
-                            <button type="button" class="btn btn-primary btn-block" onclick="minusOneC()">-1</button>
+                            <button type="button" class="btn btn-primary btn-block" onclick="minusOne('a_amp_missed')">-1</button>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="tab-pane fade" id="pills-teleop" role="tabpanel" aria-labelledby="pills-teleop-tab">
-                <h2>Cargo</h2>
+                <h2>Notes (The Game Piece, not Words)</h2>
                 <div class="form-group">
-                    <script>
-                        function plusOneD() {
-                            document.getElementById('hg_scored').stepUp(1);
-                        }
-
-                        function minusOneD() {
-                            document.getElementById('hg_scored').stepDown(1);
-                            if (document.getElementById('hg_scored').value < 0) {
-                                document.getElementById('hg_scored').value = 0;
-                                alert("Nice try. You can't enter a negative number");
-                            }
-                        }
-                    </script>
-                    <label for="hg_scored">High Goals Scored</label>
-                    <input type="number" class="form-control" pattern="[0-9]*" id="hg_scored" name="hg_scored" value="0">
+                    <label for="speaker_scored">Speaker Notes Scored</label>
+                    <input type="number" class="form-control" pattern="[0-9]*" id="speaker_scored" name="speaker_scored" value="0">
                     <div class="row">
                         <div class="d-grid gap-2 col">
-                            <button type="button" class="btn btn-primary btn-block" onclick="plusOneD()">+1</button>
+                            <button type="button" class="btn btn-primary btn-block" onclick="plusOne('speaker_scored')">+1</button>
                         </div>
                         <div class="d-grid gap-2 col">
-                            <button type="button" class="btn btn-primary btn-block" onclick="minusOneD()">-1</button>
+                            <button type="button" class="btn btn-primary btn-block" onclick="minusOne('speaker_scored')">-1</button>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <script>
-                        function plusOneE() {
-                            document.getElementById('hg_missed').stepUp(1);
-                        }
-
-                        function minusOneE() {
-                            document.getElementById('hg_missed').stepDown(1);
-                            if (document.getElementById('hg_missed').value < 0) {
-                                document.getElementById('hg_missed').value = 0;
-                                alert("Nice try. You can't enter a negative number");
-                            }
-                        }
-                    </script>
-                    <label for="hg_missed">High Goals Missed</label>
-                    <input type="number" class="form-control" pattern="[0-9]*" id="hg_missed" name="hg_missed" value="0">
+                    <label for="speaker_missed">Speaker Notes Missed</label>
+                    <input type="number" class="form-control" pattern="[0-9]*" id="speaker_missed" name="speaker_missed" value="0">
                     <div class="row">
                         <div class="d-grid gap-2 col">
-                            <button type="button" class="btn btn-primary btn-block" onclick="plusOneE()">+1</button>
+                            <button type="button" class="btn btn-primary btn-block" onclick="plusOne('speaker_missed')">+1</button>
                         </div>
                         <div class="d-grid gap-2 col">
-                            <button type="button" class="btn btn-primary btn-block" onclick="minusOneE()">-1</button>
+                            <button type="button" class="btn btn-primary btn-block" onclick="minusOne('speaker_missed')">-1</button>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <script>
-                        function plusOneJ() {
-                            document.getElementById('hg_scored_launch_pad').stepUp(1);
-                        }
-
-                        function minusOneJ() {
-                            document.getElementById('hg_scored_launch_pad').stepDown(1);
-                            if (document.getElementById('hg_scored_launch_pad').value < 0) {
-                                document.getElementById('hg_scored_launch_pad').value = 0;
-                                alert("Nice try. You can't enter a negative number");
-                            }
-                        }
-                    </script>
-                    <label for="hg_scored_launch_pad">High Goals Scored Launch Pad</label>
-                    <input type="number" class="form-control" pattern="[0-9]*" id="hg_scored_launch_pad" name="hg_scored_launch_pad" value="0">
+                    <label for="speaker_scored_protected">Speaker Notes Scored From Podium</label>
+                    <input type="number" class="form-control" pattern="[0-9]*" id="speaker_scored_protected" name="speaker_scored_protected" value="0">
                     <div class="row">
                         <div class="d-grid gap-2 col">
-                            <button type="button" class="btn btn-primary btn-block" onclick="plusOneJ()">+1</button>
+                            <button type="button" class="btn btn-primary btn-block" onclick="plusOne('speaker_scored_protected')">+1</button>
                         </div>
                         <div class="d-grid gap-2 col">
-                            <button type="button" class="btn btn-primary btn-block" onclick="minusOneJ()">-1</button>
-                        </div>
-                    </div>
-                    <small class="form-text text-muted">This refers to any balls scored from one of the alliance launch pads</small>
-                </div>
-                <div class="form-group">
-                    <script>
-                        function plusOneK() {
-                            document.getElementById('hg_missed_launch_pad').stepUp(1);
-                        }
-
-                        function minusOneK() {
-                            document.getElementById('hg_missed_launch_pad').stepDown(1);
-                            if (document.getElementById('hg_missed_launch_pad').value < 0) {
-                                document.getElementById('hg_missed_launch_pad').value = 0;
-                                alert("Nice try. You can't enter a negative number");
-                            }
-                        }
-                    </script>
-                    <label for="hg_missed">High Goals Missed Launch Pad</label>
-                    <input type="number" class="form-control" pattern="[0-9]*" id="hg_missed_launch_pad" name="hg_missed_launch_pad" value="0">
-                    <div class="row">
-                        <div class="d-grid gap-2 col">
-                            <button type="button" class="btn btn-primary btn-block" onclick="plusOneK()">+1</button>
-                        </div>
-                        <div class="d-grid gap-2 col">
-                            <button type="button" class="btn btn-primary btn-block" onclick="minusOneK()">-1</button>
+                            <button type="button" class="btn btn-primary btn-block" onclick="minusOne('speaker_scored_protected')">-1</button>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <script>
-                        function plusOneF() {
-                            document.getElementById('lg_scored').stepUp(1);
-                        }
-
-                        function minusOneF() {
-                            document.getElementById('lg_scored').stepDown(1);
-                            if (document.getElementById('lg_scored').value < 0) {
-                                document.getElementById('lg_scored').value = 0;
-                                alert("Nice try. You can't enter a negative number");
-                            }
-                        }
-                    </script>
-                    <label for="lg_scored">Low Goals Scored</label>
-                    <input type="number" class="form-control" pattern="[0-9]*" id="lg_scored" name="lg_scored" value="0">
+                    <label for="speaker_missed_protected">Speaker Notes Missed From Podium</label>
+                    <input type="number" class="form-control" pattern="[0-9]*" id="speaker_missed_protected" name="speaker_missed_protected" value="0">
                     <div class="row">
                         <div class="d-grid gap-2 col">
-                            <button type="button" class="btn btn-primary btn-block" onclick="plusOneF()">+1</button>
+                            <button type="button" class="btn btn-primary btn-block" onclick="plusOne('speaker_missed_protected')">+1</button>
                         </div>
                         <div class="d-grid gap-2 col">
-                            <button type="button" class="btn btn-primary btn-block" onclick="minusOneF()">-1</button>
+                            <button type="button" class="btn btn-primary btn-block" onclick="minusOne('speaker_missed_protected')">-1</button>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <script>
-                        function plusOneG() {
-                            document.getElementById('lg_missed').stepUp(1);
-                        }
-
-                        function minusOneG() {
-                            document.getElementById('lg_missed').stepDown(1);
-                            if (document.getElementById('lg_missed').value < 0) {
-                                document.getElementById('lg_missed').value = 0;
-                                alert("Nice try. You can't enter a negative number");
-                            }
-                        }
-                    </script>
-                    <label for="lg_missed">Low Goals Missed</label>
-                    <input type="number" class="form-control" pattern="[0-9]*" id="lg_missed" name="lg_missed" value="0">
+                    <label for="amp_scored">Amp Notes Scored</label>
+                    <input type="number" class="form-control" pattern="[0-9]*" id="amp_scored" name="amp_scored" value="0">
                     <div class="row">
                         <div class="d-grid gap-2 col">
-                            <button type="button" class="btn btn-primary btn-block" onclick="plusOneG()">+1</button>
+                            <button type="button" class="btn btn-primary btn-block" onclick="plusOne('amp_scored')">+1</button>
                         </div>
                         <div class="d-grid gap-2 col">
-                            <button type="button" class="btn btn-primary btn-block" onclick="minusOneG()">-1</button>
+                            <button type="button" class="btn btn-primary btn-block" onclick="minusOne('amp_scored')">-1</button>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <script>
-                        function plusOneH() {
-                            document.getElementById('balls_dropped').stepUp(1);
-                        }
-
-                        function minusOneH() {
-                            document.getElementById('balls_dropped').stepDown(1);
-                            if (document.getElementById('balls_dropped').value < 0) {
-                                document.getElementById('balls_dropped').value = 0;
-                                alert("Nice try. You can't enter a negative number");
-                            }
-                        }
-                    </script>
-                    <label for="balls_dropped">Cargo Dropped</label>
-                    <input type="number" class="form-control" pattern="[0-9]*" id="balls_dropped" name="balls_dropped" value="0">
+                    <label for="amp_missed">Amp Notes Missed</label>
+                    <input type="number" class="form-control" pattern="[0-9]*" id="amp_missed" name="amp_missed" value="0">
                     <div class="row">
                         <div class="d-grid gap-2 col">
-                            <button type="button" class="btn btn-primary btn-block" onclick="plusOneH()">+1</button>
+                            <button type="button" class="btn btn-primary btn-block" onclick="plusOne('amp_missed')">+1</button>
                         </div>
                         <div class="d-grid gap-2 col">
-                            <button type="button" class="btn btn-primary btn-block" onclick="minusOneH()">-1</button>
+                            <button type="button" class="btn btn-primary btn-block" onclick="minusOne('amp_missed')">-1</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="notes_dropped">Notes Dropped</label>
+                    <input type="number" class="form-control" pattern="[0-9]*" id="notes_dropped" name="notes_dropped" value="0">
+                    <div class="row">
+                        <div class="d-grid gap-2 col">
+                            <button type="button" class="btn btn-primary btn-block" onclick="plusOne('notes_dropped')">+1</button>
+                        </div>
+                        <div class="d-grid gap-2 col">
+                            <button type="button" class="btn btn-primary btn-block" onclick="minusOne('notes_dropped')">-1</button>
                         </div>
                     </div>
                 </div>
@@ -360,19 +229,30 @@ require 'header.php';
                 <div class="form-group">
                     <label for="climb">Climbing:</label>
                     <select class="form-select mr-sm-2" name="climb" id="climb">
-                        <option value="nothing">Did not climb</option>
-                        <option value="low_rung">Low Rung</option>
-                        <option value="mid_rung">Mid Rung</option>
-                        <option value="high_rung">High Rung</option>
-                        <option value="traversal_rung">Traversal Rung</option>
+                        <option value="nothing">Not on Stage</option>
+                        <option value="parked">Parked</option>
+                        <option value="on_stage_alone">On Stage Alone</option>
+                        <option value="on_stage_one_teammate">Harmony with One Teammate</option>
+                        <option value="on_stage_alliance">Harmony with Entire Alliance</option>
                     </select>
                 </div>
                 <div class="form-group">
+                    <label for="trap_note" class="col-sm-2 col-form-label">Did they score a note in the trap?</label>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="trap_note1" name="trap_note" class="form-check-input" value="1">
+                        <label class="form-check-label" for="trap_note1">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="trap_note2" name="trap_note" class="form-check-input" value="0" checked>
+                        <label class="form-check-label" for="trap_note2">No</label>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="drive_team" class="col-sm-2 col-form-label">Please rate the drive team performance:</label>
-                    <input type="range" class="form-range" value="1" min="1" max="10" id="drive_team" name="drive_team" onchange="updateTextBox(this.value);">
+                    <input type="range" class="form-range" value="1" min="1" max="10" id="drive_team" name="drive_team" onchange="updateTextBox(this.value, 'driveteamtext');">
                     <script>
-                        function updateTextBox(val) {
-                            document.getElementById('driveteamtext').value = val;
+                        function updateTextBox(val, field_name) {
+                            document.getElementById(field_name).value = val;
                         }
                     </script>
                     <input type="text" class="form-control" id="driveteamtext" value="1" readonly>
@@ -394,23 +274,13 @@ require 'header.php';
                 </div>
                 <div class="form-group">
                     <label for="defense_rating" class="col-sm-2 col-form-label">Please rate how well they defended:</label>
-                    <input type="range" class="form-range" value="0" min="0" max="10" id="defense_rating" name="defense_rating" onchange="updateTextBox1(this.value);">
-                    <script>
-                        function updateTextBox1(val) {
-                            document.getElementById('defensetext').value = val;
-                        }
-                    </script>
+                    <input type="range" class="form-range" value="0" min="0" max="10" id="defense_rating" name="defense_rating" onchange="updateTextBox(this.value, 'defensetext');">
                     <input type="text" class="form-control" id="defensetext" value="0" readonly>
                     <small class="form-text text-muted">NOTE: If they didn't play defense, please leave this at 0.</small>
                 </div>
                 <div class="form-group">
-                    <label for="intake_rating" class="col-sm-2 col-form-label">Please rate how well their ball intake was:</label>
-                    <input type="range" class="form-range" value="1" min="1" max="10" id="intake_rating" name="intake_rating" onchange="updateTextBox2(this.value);">
-                    <script>
-                        function updateTextBox2(val) {
-                            document.getElementById('intaketext').value = val;
-                        }
-                    </script>
+                    <label for="intake_rating" class="col-sm-2 col-form-label">Please rate how effective their note intake was:</label>
+                    <input type="range" class="form-range" value="1" min="1" max="10" id="intake_rating" name="intake_rating" onchange="updateTextBox(this.value, 'intaketext');">
                     <input type="text" class="form-control" id="intaketext" value="1" readonly>
                 </div>
                 <div class="form-group">
@@ -421,7 +291,10 @@ require 'header.php';
                     <label for="comments">General Comments:</label>
                     <textarea class="form-control" rows="8" name="comments" id="comments"></textarea>
                 </div>
-                <button class="btn btn-success btn-block input-group-btn" type="submit" name="match-submit">Submit</button>
+                <br>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-success btn-block input-group-btn" type="submit" name="match-submit">Submit</button>
+                </div>
             </div>
         </div>
     </form>
