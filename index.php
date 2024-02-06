@@ -11,14 +11,14 @@ require 'header.php';
         </div>';
     }
     ?>
-    <h1 style="text-align:center"><b>Laker Scout</b></h1>
+    <h1 style="text-align:center"><b>Feather Scout</b></h1>
     <div class="text-center">
-        <img class="img-fluid" src="images/startup_logo.jpeg" alt="Laker Robotics Logo">
+        <img class="img-fluid" src="images/logo.png" alt="Feather Logo">
     </div>
     <div class="d-grid gap-2">
         <a href="select_comp.php?scout=true" class="btn btn-outline-primary btn-lg btn-block">Scout</a>
         <a href="select_comp.php?review=true" class="btn btn-outline-primary btn-lg btn-block">Review Data</a>
-        <a href="picklist_select.php" class="btn btn-outline-primary btn-lg btn-block">Picklist Generator</a>
+        <!--<a href="select_comp.php?picklist=true" class="btn btn-outline-primary btn-lg btn-block">Picklist Generator</a>-->
         <a href="acknowledgements.php" class="btn btn-outline-primary btn-lg btn-block">Acknowledgements</a>
         <?php
         if ($_SESSION['userRole'] == 'Admin') {
@@ -27,6 +27,7 @@ require 'header.php';
             echo '<a href="team_lead.php" class="btn btn-outline-primary btn-lg btn-block">Team Lead Menu</a>';
         }
         ?>
+        <a href="https://1drv.ms/x/s!AhRowFmw_E2akiO9S8uO7cXrucBZ?e=9qZhJ5" class="btn btn-outline-success btn-lg btn-block">Download Paper Scouting Sheet</a>
     </div>
 </main>
 <?php

@@ -1,5 +1,5 @@
 <?php
-require 'header.php'
+require 'header.php';
 ?>
 <?php
 if ($_SESSION['userRole'] != 'Admin') {
@@ -10,7 +10,7 @@ if ($_SESSION['userRole'] != 'Admin') {
 <h1 style="text-align:center">Admin Menu</h1>
 <div class="d-grid gap-2">
     <a href="admin_accessmanagement.php" class="btn btn-outline-primary btn-lg btn-block">Access Management</a>
-    <a href="admin_editdata.php" class="btn btn-outline-primary btn-lg btn-block">Modify Data</a>
+    <a href="select_comp.php?edit=true" class="btn btn-outline-primary btn-lg btn-block">Modify Data</a>
     <a href="admin_filltables.php" class="btn btn-outline-primary btn-lg btn-block">Populate Tables</a>
     <a href="admin_cleardata.php" class="btn btn-outline-primary btn-lg btn-block">Clear Table Data</a>
 </div>

@@ -35,11 +35,11 @@ require 'header.php';
         </h2>
         <div id="collapse' . $index . '" class="accordion-collapse collapse" aria-labelledby="heading' . $index . '" data-parent="#accordionExample">
         <div class="accordion-body">
-        In Autonomous, Team ' . $row['TeamNum'] . ' averaged <b>' . $row['AvgAutoSpeaker'] . '</b> speakers scored on <b>' . $autoHGPercent . '%</b> accuracy.<br>
-        They also averaged <b>' . $row['AvgAutoAmp'] . '</b> amps scored on <b>' . $autoLGPercent . '%</b> accuracy.<br>
-        In Teleop, they averaged <b>' . $row['AvgSpeaker'] . '</b> speakers scored per match on <b>' . $HGPercent . '%</b> accuracy.<br>
-        They also averaged <b>' . $row['AvgAmp'] . '</b> amps scored per match on <b>' . $LGPercent . '%</b> accuracy, and<br>
-        they averaged <b>' . $row['AvgSpeakerPodium'] . '</b> speakers scored from the podium per match on <b>' . $ProtectedPercent . '%</b> accuracy.<br>';
+        In Autonomous, Team ' . $row['TeamNum'] . ' averaged <b>' . $row['AvgAutoSpeaker'] . '</b> notes scored in the speaker on <b>' . $autoHGPercent . '%</b> accuracy.<br>
+        They also averaged <b>' . $row['AvgAutoAmp'] . '</b> notes scored in the amp on <b>' . $autoLGPercent . '%</b> accuracy.<br>
+        In Teleop, they averaged <b>' . $row['AvgSpeaker'] . '</b> notes scored in the speaker per match on <b>' . $HGPercent . '%</b> accuracy.<br>
+        They also averaged <b>' . $row['AvgAmp'] . '</b> notes scored in the amp per match on <b>' . $LGPercent . '%</b> accuracy, and<br>
+        they averaged <b>' . $row['AvgSpeakerPodium'] . '</b> notes scored in the speaker from the podium per match on <b>' . $ProtectedPercent . '%</b> accuracy.<br>';
         $query = "SELECT `MatchStats`.`RobotID` AS `RobotID`,`MatchStats`.`CompID` AS `CompID`,COUNT(`MatchStats`.`Climb`) AS `MatchesClimbed`,COUNT(`MatchStats`.`RobotID`) AS `Matches` FROM `MatchStats` WHERE CompID=$CompID AND RobotID=$row[TeamNum] AND ((`MatchStats`.`Climb` = 'on_stage_alone') OR (`MatchStats`.`Climb` = 'on_stage_one_teammate') OR (`MatchStats`.`Climb` = 'on_stage_alliance')) GROUP BY `MatchStats`.`RobotID`,`MatchStats`.`CompID`";
         $result = @mysqli_query($conn, $query);
         $rowB = mysqli_fetch_array($result);

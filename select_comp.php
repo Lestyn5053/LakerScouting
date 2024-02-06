@@ -18,6 +18,21 @@
         while($row = mysqli_fetch_array($response)) {
             echo '<a class="btn btn-outline-primary btn-lg btn-block" href="match_scout.php?CompID='. $row['ID'] .'">'. $row['CompName'] .'</a>';
         }
+    } else if (isset($_GET['picklist'])) {
+        while($row = mysqli_fetch_array($response))
+        {
+            echo '<a class="btn btn-outline-primary btn-lg btn-block" href="picklist.php?CompID='. $row['ID'] .'">'. $row['CompName'] .'</a>';
+        }
+    } else if (isset($_GET['edit'])) {
+        if ($_SESSION['userRole'] != 'Admin') {
+            header("Location: index.php?error=noaccess");
+            exit();
+        } else {
+            while($row = mysqli_fetch_array($response))
+            {
+                echo '<a class="btn btn-outline-primary btn-lg btn-block" href="admin_editdata.php?CompID='. $row['ID'] .'">'. $row['CompName'] .'</a>';
+            }
+        }
     }
 
 	?>

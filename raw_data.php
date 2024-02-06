@@ -50,41 +50,45 @@ require 'header.php';
         mysqli_stmt_bind_param($stmt, "i", $CompID);
         mysqli_stmt_execute($stmt);
         $response = mysqli_stmt_get_result($stmt);
-        echo '<table id="rawdata" cellspacing="5" cellpadding="8">
+        echo '<table class="table table-bordered border-primary" id="rawdata" cellspacing="5" cellpadding="8">
+            <thead class="table-light">
             <tr align="center"><td><b>Team</b></td>
             <td><b>Match</b></td>
             <td><b>Auto Move?</b></td>
-            <td><b>AutoHGScored</b></td>
-            <td><b>AutoHGMissed</b></td>
-            <td><b>AutoLGScored</b></td>
-            <td><b>AutoLGMissed</b></td>
-            <td><b>HGScored</b></td>
-            <td><b>HGMissed</b></td>
-            <td><b>LGScored</b></td>
-            <td><b>LGMissed</b></td>
-            <td><b>BallsDropped</b></td>
+            <td><b>AutoSpeakerScored</b></td>
+            <td><b>AutoSpeakerMissed</b></td>
+            <td><b>AutoAmpScored</b></td>
+            <td><b>AutoAmpMissed</b></td>
+            <td><b>SpeakerScored</b></td>
+            <td><b>SpeakerMissed</b></td>
+            <td><b>AmpScored</b></td>
+            <td><b>AmpMissed</b></td>
+            <td><b>NotesDropped</b></td>
             <td><b>Climb</b></td>
+            <td><b>TrapNote</b></td>
             <td><b>DriveRating</b></td>
             <td><b>DefenseComments</b></td>
             <td><b>DefenseRating</b></td>
             <td><b>Penalties</b></td>
             <td><b>Comments</b></td>
-            </tr>';
+            </tr>
+            </thead>';
         while ($row = mysqli_fetch_array($response)) {
             echo '<tr><td>' .
                 $row['RobotID'] . '</td><td align="center">' .
                 $row['MatchNum'] . '</td><td align="center">' .
-                $row['autoMove'] . '</td><td align="center">' .
-                $row['autoHGScored'] . '</td><td align="center">' .
-                $row['autoHGMissed'] . '</td><td align="center">' .
-                $row['autoLGScored'] . '</td><td align="center">' .
-                $row['autoLGMissed'] . '</td><td align="center">' .
-                $row['HGScored'] . '</td><td align="center">' .
-                $row['HGMissed'] . '</td><td align="center">' .
-                $row['teleLGScored'] . '</td><td align="center">' .
-                $row['teleLGMissed'] . '</td><td align="center">' .
-                $row['BallsDropped'] . '</td><td align="center">' .
+                $row['StartingZone'] . '</td><td align="center">' .
+                $row['AutoSpeakerScored'] . '</td><td align="center">' .
+                $row['AutoSpeakerMissed'] . '</td><td align="center">' .
+                $row['AutoAmpScored'] . '</td><td align="center">' .
+                $row['AutoAmpMissed'] . '</td><td align="center">' .
+                $row['SpeakerScored'] . '</td><td align="center">' .
+                $row['SpeakerMissed'] . '</td><td align="center">' .
+                $row['AmpScored'] . '</td><td align="center">' .
+                $row['AmpMissed'] . '</td><td align="center">' .
+                $row['NotesDropped'] . '</td><td align="center">' .
                 $row['Climb'] . '</td><td align="center">' .
+                $row['TrapNote'] . '</td><td align="center">' .
                 $row['DriveTeam'] . '</td><td align="center">' .
                 $row['DefenseComments'] . '</td><td align="center">' .
                 $row['DefenseRating'] . '</td><td align="center">' .

@@ -6,6 +6,23 @@ require 'header.php';
     $CompID = trim($_GET['CompID']);
     require 'includes/dbh.php';
     ?>
+    <script>
+        function plusOne(field_name) {
+            document.getElementById(field_name).stepUp(1);
+        }
+
+        function minusOne(field_name) {
+            document.getElementById(field_name).stepDown(1);
+            if (document.getElementById(field_name).value < 0) {
+                document.getElementById(field_name).value = 0;
+                alert("Nice try. You can't enter a negative number");
+            }
+        }
+
+        function updateTextBox(val, field_name) {
+            document.getElementById(field_name).value = val;
+        }
+    </script>
     <h1 style="text-align:center">Match Scouting</h1>
     <form class="needs-validation" action="includes/match_submit.php?CompID=<?php echo $CompID; ?>" method="post" novalidate>
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -75,21 +92,8 @@ require 'header.php';
                         <label class="form-check-label" for="auto_move2">No</label>
                     </div>
                 </div>
-                <h2>Notes (The Game Piece, not Words)</h2>
+                <h2>Speaker</h2>
                 <div class="form-group">
-                    <script>
-                        function plusOne(field_name) {
-                            document.getElementById(field_name).stepUp(1);
-                        }
-
-                        function minusOne(field_name) {
-                            document.getElementById(field_name).stepDown(1);
-                            if (document.getElementById(field_name).value < 0) {
-                                document.getElementById(field_name).value = 0;
-                                alert("Nice try. You can't enter a negative number");
-                            }
-                        }
-                    </script>
                     <label for="a_speaker_scored">Speaker Notes Scored</label>
                     <input type="number" class="form-control" pattern="[0-9]*" id="a_speaker_scored" name="a_speaker_scored" value="0">
                     <div class="row">
@@ -113,6 +117,7 @@ require 'header.php';
                         </div>
                     </div>
                 </div>
+                <h2>Amp</h2>
                 <div class="form-group">
                     <label for="a_amp_scored">Amp Notes Scored</label>
                     <input type="number" class="form-control" pattern="[0-9]*" id="a_amp_scored" name="a_amp_scored" value="0">
@@ -139,7 +144,7 @@ require 'header.php';
                 </div>
             </div>
             <div class="tab-pane fade" id="pills-teleop" role="tabpanel" aria-labelledby="pills-teleop-tab">
-                <h2>Notes (The Game Piece, not Words)</h2>
+                <h2>Speaker</h2>
                 <div class="form-group">
                     <label for="speaker_scored">Speaker Notes Scored</label>
                     <input type="number" class="form-control" pattern="[0-9]*" id="speaker_scored" name="speaker_scored" value="0">
@@ -188,6 +193,7 @@ require 'header.php';
                         </div>
                     </div>
                 </div>
+                <h2>Amp</h2>
                 <div class="form-group">
                     <label for="amp_scored">Amp Notes Scored</label>
                     <input type="number" class="form-control" pattern="[0-9]*" id="amp_scored" name="amp_scored" value="0">
@@ -250,11 +256,6 @@ require 'header.php';
                 <div class="form-group">
                     <label for="drive_team" class="col-sm-2 col-form-label">Please rate the drive team performance:</label>
                     <input type="range" class="form-range" value="1" min="1" max="10" id="drive_team" name="drive_team" onchange="updateTextBox(this.value, 'driveteamtext');">
-                    <script>
-                        function updateTextBox(val, field_name) {
-                            document.getElementById(field_name).value = val;
-                        }
-                    </script>
                     <input type="text" class="form-control" id="driveteamtext" value="1" readonly>
                 </div>
                 <div class="form-group">
