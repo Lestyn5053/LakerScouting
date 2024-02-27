@@ -61,6 +61,8 @@ require 'header.php';
             <td><b>AutoAmpMissed</b></td>
             <td><b>SpeakerScored</b></td>
             <td><b>SpeakerMissed</b></td>
+            <td><b>PodiumSpeakerScored</b></td>
+            <td><b>PodiumSpeakerMissed</b></td>
             <td><b>AmpScored</b></td>
             <td><b>AmpMissed</b></td>
             <td><b>NotesDropped</b></td>
@@ -84,6 +86,8 @@ require 'header.php';
                 $row['AutoAmpMissed'] . '</td><td align="center">' .
                 $row['SpeakerScored'] . '</td><td align="center">' .
                 $row['SpeakerMissed'] . '</td><td align="center">' .
+                $row['PodiumSpeakerScored'] . '</td><td align="center">' .
+                $row['PodiumSpeakerMissed'] . '</td><td align="center">' .
                 $row['AmpScored'] . '</td><td align="center">' .
                 $row['AmpMissed'] . '</td><td align="center">' .
                 $row['NotesDropped'] . '</td><td align="center">' .

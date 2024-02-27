@@ -24,7 +24,7 @@
             echo '<a class="btn btn-outline-primary btn-lg btn-block" href="picklist.php?CompID='. $row['ID'] .'">'. $row['CompName'] .'</a>';
         }
     } else if (isset($_GET['edit'])) {
-        if ($_SESSION['userRole'] != 'Admin') {
+        if ($_SESSION['userRole'] != 'Admin' && $_SESSION['userRole'] != 'Team Lead') {
             header("Location: index.php?error=noaccess");
             exit();
         } else {

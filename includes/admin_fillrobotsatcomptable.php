@@ -11,9 +11,7 @@ if (isset($_POST['linking-table-submit'])) {
     $obj = json_decode($compResponse, true);
     foreach($obj as $item => $value) {
         $event_key = $value['key'];
-        $event_name = $value['name'];
-        $replacement_array = array("FIM District ", " Event", "FIRST in ");
-        $short_name = str_replace($replacement_array, "", $event_name);
+        $event_name = $value['short_name'];
 
         $sql = "SELECT ID FROM Competition WHERE CompName LIKE ?";
         $stmt = mysqli_stmt_init($conn);
@@ -21,7 +19,7 @@ if (isset($_POST['linking-table-submit'])) {
             header("Location: ../admin_filltables.php?error=sqlerror&event=$event_key");
             exit();
         } else {
-            mysqli_stmt_bind_param($stmt, "s", $short_name);
+            mysqli_stmt_bind_param($stmt, "s", $event_name);
             mysqli_stmt_execute($stmt);
             $getIDResponse = mysqli_stmt_get_result($stmt);
             while ($row = mysqli_fetch_array($getIDResponse)) {

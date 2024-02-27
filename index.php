@@ -27,7 +27,6 @@ require 'header.php';
             echo '<a href="team_lead.php" class="btn btn-outline-primary btn-lg btn-block">Team Lead Menu</a>';
         }
         ?>
-        <a href="https://1drv.ms/x/s!AhRowFmw_E2akiO9S8uO7cXrucBZ?e=9qZhJ5" class="btn btn-outline-success btn-lg btn-block">Download Paper Scouting Sheet</a>
     </div>
 </main>
 <?php

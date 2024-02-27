@@ -2,7 +2,7 @@
 require 'header.php';
 ?>
 <?php
-if ($_SESSION['userRole'] != 'Admin') {
+if ($_SESSION['userRole'] != 'Admin' && $_SESSION['userRole'] != 'Team Lead') {
     header("Location: index.php?error=noaccess");
     exit();
 }

@@ -1,8 +1,13 @@
 <?php
 require 'header.php';
 ?>
+
 <main>
     <?php
+    if ($_SESSION['userRole'] != 'Admin' && $_SESSION['userRole'] != 'Team Lead') {
+        header("Location: index.php?error=noaccess");
+        exit();
+    }
     $CompID = trim($_GET['CompID']);
     require 'includes/dbh.php';
     ?>
@@ -66,9 +71,9 @@ require 'header.php';
                 $row['DefenseComments'] . '</td><td align="center">' .
                 $row['DefenseRating'] . '</td><td align="center">' .
                 $row['Penalties'] . '</td><td align="center">' .
-                $row['Comments'] . '</td><td align="center">' . 
-                '<a href="editmatch.php?ID=' . $row['ID'] . '&CompID='. $CompID .'" class="btn btn-primary">Edit</a></td><td align="center">' . 
-                '<a href="deletematch.php?ID=' . $row['ID'] . '&CompID='. $CompID .'" class="btn btn-danger">Delete</a></td><td align="center">';
+                $row['Comments'] . '</td><td align="center">' .
+                '<a href="editmatch.php?ID=' . $row['ID'] . '&CompID=' . $CompID . '" class="btn btn-primary disabled">Edit</a></td><td align="center">' .
+                '<a href="deletematch.php?ID=' . $row['ID'] . '&CompID=' . $CompID . '" class="btn btn-danger">Delete</a></td><td align="center">';
             echo '</tr>';
         }
         echo '</table>';
